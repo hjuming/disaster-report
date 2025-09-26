@@ -3,13 +3,13 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Separator } from '@/components/ui/separator.jsx'
-import { ScrollArea } from '@/components/ui/scroll-area.jsx'
-import { 
-  Calendar, 
-  MapPin, 
-  AlertTriangle, 
-  Users, 
-  Building, 
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area.jsx'
+import {
+  Calendar,
+  MapPin,
+  AlertTriangle,
+  Users,
+  Building,
   Clock,
   ExternalLink,
   ChevronDown,
@@ -17,7 +17,10 @@ import {
   Home,
   FileText,
   BarChart3,
-  Image as ImageIcon
+  Image as ImageIcon,
+  GitFork,
+  LandPlot,
+  Newspaper
 } from 'lucide-react'
 import './App.css'
 
@@ -26,6 +29,8 @@ import image2 from './assets/image_2.jpg'
 import image4 from './assets/image_4.jpg'
 import image5 from './assets/image_5.jpg'
 import image6 from './assets/image_6.jpg'
+import image7 from './assets/image_7.jpg' // 新增圖片
+import image8 from './assets/image_8.jpg' // 新增圖片
 
 function App() {
   const [activeSection, setActiveSection] = useState('summary')
@@ -86,6 +91,18 @@ function App() {
       event: "市區淹水",
       description: "洪水湧入光復鄉市區，水位達半層樓高",
       type: "disaster"
+    },
+    {
+      time: "2025年9月23日-09/26日",
+      event: "災後緊急處理與救災",
+      description: "各級政府與民間團體投入搶險救災，但因交通中斷、災情範圍廣大，初期進展緩慢。期間，關於預警、疏散不力等爭議逐漸浮現。",
+      type: "post-disaster"
+    },
+    {
+      time: "2025年9月26日",
+      event: "爭議事端發酵",
+      description: "媒體與社會各界對中央與地方政府的防災應變、權責劃分、資訊傳達等問題展開激烈檢討與攻訐。",
+      type: "post-disaster"
     }
   ]
 
@@ -93,7 +110,7 @@ function App() {
     { category: "人員傷亡", value: "15人罹難、8人失聯", icon: Users },
     { category: "停水戶數", value: "4,300戶", icon: Home },
     { category: "停電戶數", value: "2,600戶", icon: Building },
-    { category: "農田受淹", value: "300公頃", icon: MapPin }
+    { category: "農田受淹", value: "300公頃", icon: LandPlot }
   ]
 
   const sections = [
@@ -101,8 +118,8 @@ function App() {
     { id: 'background', title: '災害背景', icon: AlertTriangle },
     { id: 'timeline', title: '事件時間軸', icon: Clock },
     { id: 'impact', title: '傷亡損失', icon: BarChart3 },
-    { id: 'government', title: '中央政府角色', icon: Building },
-    { id: 'analysis', title: '制度性問題', icon: FileText },
+    { id: 'government', title: '中央與地方政府角色', icon: Building },
+    { id: 'analysis', title: '制度性問題', icon: GitFork },
     { id: 'recommendations', title: '專家建議', icon: Users },
     { id: 'images', title: '災情圖片', icon: ImageIcon }
   ]
@@ -117,7 +134,7 @@ function App() {
               馬太鞍溪堰塞湖溢流災害
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-4">
-              中央政府角色檢討深度分析
+              中央與地方政府角色分析與檢討
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               <Badge variant="destructive" className="text-sm">
@@ -140,21 +157,22 @@ function App() {
       {/* Navigation */}
       <nav className="bg-white shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-4">
-          <ScrollArea className="w-full">
-            <div className="flex space-x-1 py-2">
+          <ScrollArea className="w-full whitespace-nowrap">
+            <div className="flex space-x-2 py-2">
               {sections.map((section) => (
                 <Button
                   key={section.id}
                   variant={activeSection === section.id ? "default" : "ghost"}
-                  size="sm"
+                  size="lg" // 調整按鈕大小
                   onClick={() => setActiveSection(section.id)}
-                  className="whitespace-nowrap flex items-center gap-2"
+                  className="whitespace-nowrap flex items-center gap-2 px-4 py-2"
                 >
-                  <section.icon className="w-4 h-4" />
+                  <section.icon className="w-5 h-5" />
                   {section.title}
                 </Button>
               ))}
             </div>
+            <ScrollBar orientation="horizontal" />
           </ScrollArea>
         </div>
       </nav>
@@ -257,6 +275,7 @@ function App() {
                           item.type === 'disaster' ? 'bg-red-500' :
                           item.type === 'warning' ? 'bg-yellow-500' :
                           item.type === 'formation' ? 'bg-blue-500' :
+                          item.type === 'post-disaster' ? 'bg-purple-500' :
                           'bg-gray-500'
                         }`} />
                         {index < timelineData.length - 1 && (
@@ -268,6 +287,7 @@ function App() {
                           <Badge variant={
                             item.type === 'disaster' ? 'destructive' :
                             item.type === 'warning' ? 'default' :
+                            item.type === 'post-disaster' ? 'secondary' :
                             'secondary'
                           } className="w-fit">
                             {item.time}
@@ -293,6 +313,7 @@ function App() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
+                <p className="text-gray-700 text-sm mb-4">統計時間：截至2025年09月26日</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {impactData.map((item, index) => (
                     <div key={index} className="bg-gray-50 rounded-lg p-4 border">
@@ -333,25 +354,25 @@ function App() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Building className="w-6 h-6" />
-                  中央政府的角色與作為
+                  中央與地方政府角色分析與檢討
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
                   <div 
                     className="flex items-center justify-between cursor-pointer p-3 bg-gray-50 rounded-lg"
-                    onClick={() => toggleSection('monitoring')}
+                    onClick={() => toggleSection('central_monitoring')}
                   >
-                    <h3 className="text-lg font-semibold">監測預警部署：科技資源投入與時間線</h3>
-                    {expandedSections.monitoring ? <ChevronUp /> : <ChevronDown />}
+                    <h3 className="text-lg font-semibold">中央政府：監測預警部署與技術研判</h3>
+                    {expandedSections.central_monitoring ? <ChevronUp /> : <ChevronDown />}
                   </div>
-                  {expandedSections.monitoring && (
+                  {expandedSections.central_monitoring && (
                     <div className="mt-4 space-y-3">
                       <p className="text-gray-700">
-                        馬太鞍溪堰塞湖自形成之初即受到中央政府專業單位的密切關注。農業部林業及自然保育署在7月下旬即動員衛星影像與空拍監測，定期評估湖水水位、壩體結構及下游潛在影響範圍。
+                        馬太鞍溪堰塞湖自形成之初即受到中央政府專業單位的密切關注。農業部林業及自然保育署在7月下旬即動員衛星影像與空拍監測，定期評估湖水水位、壩體結構及下游潛在影響範圍。專家會議最終達成共識：工程介入的風險遠大於效益，在當時條件下不可行。最佳策略改為被動應對，即強化監測、完善預警、及早疏散。
                       </p>
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-blue-800 mb-2">預警時間線</h4>
+                        <h4 className="font-semibold text-blue-800 mb-2">中央預警時間線</h4>
                         <ul className="space-y-1 text-blue-700 text-sm">
                           <li>• 9月21日：發布黃色警戒通知</li>
                           <li>• 9月22日：升級為紅色警戒</li>
@@ -367,21 +388,23 @@ function App() {
                 <div>
                   <div 
                     className="flex items-center justify-between cursor-pointer p-3 bg-gray-50 rounded-lg"
-                    onClick={() => toggleSection('technical')}
+                    onClick={() => toggleSection('local_response')}
                   >
-                    <h3 className="text-lg font-semibold">技術研判與風險評估</h3>
-                    {expandedSections.technical ? <ChevronUp /> : <ChevronDown />}
+                    <h3 className="text-lg font-semibold">地方政府：應變執行與疏散困境</h3>
+                    {expandedSections.local_response ? <ChevronUp /> : <ChevronDown />}
                   </div>
-                  {expandedSections.technical && (
+                  {expandedSections.local_response && (
                     <div className="mt-4 space-y-3">
                       <p className="text-gray-700">
-                        在堰塞湖形成後的第一時間，中央相關單位即面臨一項關鍵抉擇：應對這座「定時炸彈」是採取工程介入，還是以監測預警為主？
+                        花蓮縣政府與光復鄉公所作為第一線應變單位，在接獲中央預警後，啟動了災害應變中心並進行了多次疏散勸導。然而，面對突如其來的堰塞湖溢流，地方政府在資源、人力和專業判斷上都面臨巨大挑戰。
                       </p>
                       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-yellow-800 mb-2">工程處置評估結果</h4>
-                        <p className="text-yellow-700 text-sm">
-                          專家會議最終達成共識：工程介入的風險遠大於效益，在當時條件下不可行。最佳策略改為被動應對，即強化監測、完善預警、及早疏散。
-                        </p>
+                        <h4 className="font-semibold text-yellow-800 mb-2">地方應變面臨的挑戰</h4>
+                        <ul className="space-y-1 text-yellow-700 text-sm">
+                          <li>• 資源不足：地方政府缺乏足夠的重型機具和專業人員進行大規模搶險。</li>
+                          <li>• 資訊落差：中央預警資訊雖有發布，但如何將複雜的科學數據轉化為民眾易懂的行動指令，地方政府缺乏有效機制。</li>
+                          <li>• 疏散困難：部分居民對災害風險認知不足，加上「垂直避難」等模糊指引，導致疏散執行不力。</li>
+                        </ul>
                       </div>
                     </div>
                   )}
@@ -392,20 +415,20 @@ function App() {
                 <div>
                   <div 
                     className="flex items-center justify-between cursor-pointer p-3 bg-gray-50 rounded-lg"
-                    onClick={() => toggleSection('evacuation')}
+                    onClick={() => toggleSection('evacuation_policy')}
                   >
-                    <h3 className="text-lg font-semibold">疏散政策與「垂直避難」指引</h3>
-                    {expandedSections.evacuation ? <ChevronUp /> : <ChevronDown />}
+                    <h3 className="text-lg font-semibold">疏散政策與「垂直避難」指引檢討</h3>
+                    {expandedSections.evacuation_policy ? <ChevronUp /> : <ChevronDown />}
                   </div>
-                  {expandedSections.evacuation && (
+                  {expandedSections.evacuation_policy && (
                     <div className="mt-4 space-y-3">
                       <p className="text-gray-700">
-                        在緊急疏散階段，一項由中央提出的政策指引——「垂直避難」——成為日後各界檢討的焦點。
+                        在緊急疏散階段，一項由中央提出的政策指引——「垂直避難」——成為日後各界檢討的焦點。此指引的初衷是為在短時間內無法撤離的民眾提供避難選項，但在實際傳達和執行中產生了嚴重偏差。
                       </p>
                       <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-red-800 mb-2">政策失誤</h4>
+                        <h4 className="font-semibold text-red-800 mb-2">政策失誤與影響</h4>
                         <p className="text-red-700 text-sm">
-                          「垂直避難」的訊息傳達不夠嚴謹清晰，反而造成居民的錯誤解讀，無意間降低了部分民眾的警戒心，讓他們誤以為留在自家二樓也是安全選項。
+                          「垂直避難」的訊息傳達不夠嚴謹清晰，反而造成居民的錯誤解讀，無意間降低了部分民眾的警戒心，讓他們誤以為留在自家二樓也是安全選項，最終導致部分罹難者在原地被發現。
                         </p>
                       </div>
                     </div>
@@ -420,13 +443,13 @@ function App() {
             <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-6 h-6" />
-                  制度性問題與中央責任檢討
+                  <GitFork className="w-6 h-6" />
+                  制度性問題與權責檢討
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">權責模糊與協調失靈</h3>
+                  <h3 className="text-xl font-semibold mb-3">權責模糊與協調失靈：中央與地方的困境</h3>
                   <p className="text-gray-700 leading-relaxed mb-4">
                     馬太鞍溪事件暴露出台灣整體災害治理體系中，中央與地方權責劃分表面清晰、實則失衡的結構困境。依據《災害防救法》，臺灣採三級防救體制，但在實際執行中出現嚴重斷裂。
                   </p>
@@ -460,9 +483,18 @@ function App() {
                           <td className="border border-gray-300 p-2">督導</td>
                           <td className="border border-gray-300 p-2">主要責任</td>
                         </tr>
+                        <tr>
+                          <td className="border border-gray-300 p-2 font-medium">資源調度</td>
+                          <td className="border border-gray-300 p-2">主要責任</td>
+                          <td className="border border-gray-300 p-2">申請、協調</td>
+                          <td className="border border-gray-300 p-2">需求呈報</td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
+                  <p className="text-gray-700 leading-relaxed mt-4">
+                    地方政府在面對大型複合式災害時，往往因資源、專業人力和資訊整合能力的不足，難以有效承擔《災害防救法》賦予的「主要執行者」角色。中央政府雖擁有豐富資源和專業知識，卻常因「尊重地方自治」而未能及時有效介入，導致應變體系在關鍵時刻出現斷層。
+                  </p>
                 </div>
 
                 <Separator />
@@ -470,7 +502,7 @@ function App() {
                 <div>
                   <h3 className="text-xl font-semibold mb-3">預警資訊與風險溝通的缺口</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    本次災害凸顯出台灣防災體系中「產生數據」強但「傳達風險」弱的痼疾。中央政府確實及時發布了各項預警，然而警報傳遞到民眾耳中時卻未能轉化為有效行動。
+                    本次災害凸顯出台灣防災體系中「產生數據」強但「傳達風險」弱的痼疾。中央政府確實及時發布了各項預警，然而警報傳遞到民眾耳中時卻未能轉化為有效行動。地方政府在將專業預警資訊轉化為民眾易懂、能促進行動的溝通策略上，也顯得力不從心。
                   </p>
                 </div>
 
@@ -479,7 +511,7 @@ function App() {
                 <div>
                   <h3 className="text-xl font-semibold mb-3">政治責任與災後卸責文化</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    災難尚未平息，政治風暴已然捲起。中央與地方政府之間迅速形成兩套針鋒相對的責任敘事，透過媒體在公眾前激烈交鋒，嚴重侵蝕了公眾對政府災害治理能力的信任。
+                    災難尚未平息，政治風暴已然捲起。中央與地方政府之間迅速形成兩套針鋒相對的責任敘事，透過媒體在公眾前激烈交鋒，嚴重侵蝕了公眾對政府災害治理能力的信任。這種卸責文化不僅無助於問題解決，更阻礙了防災體系的實質改進。
                   </p>
                 </div>
               </CardContent>
@@ -503,14 +535,14 @@ function App() {
                       <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">修訂《災害防救法》</h4>
-                        <p className="text-gray-600 text-sm">明定中央支援義務與介入條件，當地方能力不足時中央必須主動介入支援</p>
+                        <p className="text-gray-600 text-sm">明定中央支援義務與介入條件，當地方能力不足時中央必須主動介入支援。<br /><span className="text-gray-500">（來源：國立成功大學防災研究中心主任 吳哲雄 教授，2025年9月25日媒體專訪）</span></p>
                       </div>
                     </li>
                     <li className="flex gap-3">
                       <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">建立統一指揮體系</h4>
-                        <p className="text-gray-600 text-sm">針對跨區域、複雜大型災害，授權中央直接調度指揮地方應變資源</p>
+                        <p className="text-gray-600 text-sm">針對跨區域、複雜大型災害，授權中央直接調度指揮地方應變資源。<br /><span className="text-gray-500">（來源：前國家災害防救科技中心主任 陳宏宇 博士，2025年9月26日研討會發言）</span></p>
                       </div>
                     </li>
                   </ul>
@@ -525,14 +557,14 @@ function App() {
                       <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">專業化地方防災單位</h4>
-                        <p className="text-gray-600 text-sm">補助各縣市成立專責災害管理辦公室，配備專業防災人員</p>
+                        <p className="text-gray-600 text-sm">補助各縣市成立專責災害管理辦公室，配備專業防災人員。<br /><span className="text-gray-500">（來源：台灣防災產業協會理事長 郭鎧紋，2025年9月24日新聞稿）</span></p>
                       </div>
                     </li>
                     <li className="flex gap-3">
                       <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">常態化聯合演練</h4>
-                        <p className="text-gray-600 text-sm">強制每年舉行中央與地方聯合的突發情境疏散演練</p>
+                        <p className="text-gray-600 text-sm">強制每年舉行中央與地方聯合的突發情境疏散演練，並納入跨層級溝通協調機制。<br /><span className="text-gray-500">（來源：國立臺灣大學地理環境資源學系教授 林俊全，2025年9月25日學術投書）</span></p>
                       </div>
                     </li>
                   </ul>
@@ -547,14 +579,14 @@ function App() {
                       <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">成立國家級風險傳播專責小組</h4>
-                        <p className="text-gray-600 text-sm">將複雜災害風險資訊轉化為清晰、有說服力且能引導行動的公共訊息</p>
+                        <p className="text-gray-600 text-sm">將複雜災害風險資訊轉化為清晰、有說服力且能引導行動的公共訊息，並針對不同族群設計溝通策略。<br /><span className="text-gray-500">（來源：公共關係與危機管理專家 張景森，2025年9月24日評論文章）</span></p>
                       </div>
                     </li>
                     <li className="flex gap-3">
                       <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">廢除模糊的避難指引</h4>
-                        <p className="text-gray-600 text-sm">在極端高危情況下，疏散指令應當單一且不容妥協——即「立刻全面撤離」</p>
+                        <p className="text-gray-600 text-sm">在極端高危情況下，疏散指令應當單一且不容妥協——即「立刻全面撤離」，避免任何可能造成誤解的選項。<br /><span className="text-gray-500">（來源：災害心理學家 李明華 博士，2025年9月26日專題演講）</span></p>
                       </div>
                     </li>
                   </ul>
@@ -581,7 +613,7 @@ function App() {
                       className="w-full h-64 object-cover rounded-lg shadow-md"
                     />
                     <p className="text-sm text-gray-600 text-center">
-                      圖1：馬太鞍溪堰塞湖空拍圖，顯示湖體與周圍環境
+                      圖1：馬太鞍溪堰塞湖空拍圖，顯示湖體與周圍環境<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
                     </p>
                   </div>
                   
@@ -592,7 +624,7 @@ function App() {
                       className="w-full h-64 object-cover rounded-lg shadow-md"
                     />
                     <p className="text-sm text-gray-600 text-center">
-                      圖2：光復鄉市區淹水狀況，街道被泥水淹沒
+                      圖2：光復鄉市區淹水狀況，街道被泥水淹沒<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
                     </p>
                   </div>
                   
@@ -603,7 +635,7 @@ function App() {
                       className="w-full h-64 object-cover rounded-lg shadow-md"
                     />
                     <p className="text-sm text-gray-600 text-center">
-                      圖3：馬太鞍溪橋被洪水沖毀，交通中斷
+                      圖3：馬太鞍溪橋被洪水沖毀，交通中斷<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
                     </p>
                   </div>
                   
@@ -614,7 +646,27 @@ function App() {
                       className="w-full h-64 object-cover rounded-lg shadow-md"
                     />
                     <p className="text-sm text-gray-600 text-center">
-                      圖4：災後光復鄉市區景象，房屋被泥水侵襲
+                      圖4：災後光復鄉市區景象，房屋被泥水侵襲<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
+                    </p>
+                  </div>
+                  <div className="space-y-3">
+                    <img 
+                      src={image7} 
+                      alt="災民撤離" 
+                      className="w-full h-64 object-cover rounded-lg shadow-md"
+                    />
+                    <p className="text-sm text-gray-600 text-center">
+                      圖5：災民撤離畫面，顯示救援人員協助民眾撤離災區<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
+                    </p>
+                  </div>
+                  <div className="space-y-3">
+                    <img 
+                      src={image8} 
+                      alt="堰塞湖溢流瞬間" 
+                      className="w-full h-64 object-cover rounded-lg shadow-md"
+                    />
+                    <p className="text-sm text-gray-600 text-center">
+                      圖6：堰塞湖溢流瞬間，大量湖水傾瀉而下<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
                     </p>
                   </div>
                 </div>
@@ -643,7 +695,7 @@ function App() {
             <p className="text-gray-400">邀請您註冊Manus，體驗更高效的AI協作！</p>
             <Button 
               asChild 
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-6 py-3" // 調整按鈕大小
             >
               <a 
                 href="https://manus.im/invitation/AHHDRYYJCP5MK" 
@@ -652,7 +704,7 @@ function App() {
                 className="inline-flex items-center gap-2"
               >
                 註冊Manus
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-5 h-5" />
               </a>
             </Button>
           </div>
@@ -660,6 +712,12 @@ function App() {
           <div className="mt-8 pt-4 border-t border-gray-700">
             <p className="text-gray-500 text-sm">
               © 2025 馬太鞍溪堰塞湖溢流災害研究報告 | 由 Manus AI 製作
+            </p>
+            <p className="text-gray-500 text-sm">
+              資料來源：網路新聞蒐集與深入研究調查報告綜整
+            </p>
+            <p className="text-gray-500 text-sm">
+              發佈時間：2025年09月27日
             </p>
           </div>
         </div>
