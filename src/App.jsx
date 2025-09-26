@@ -45,61 +45,61 @@ function App() {
 
   const timelineData = [
     {
-      time: "2024年4月",
+      time: "2024年04月",
       event: "花蓮大地震",
       description: "劇烈震動東部山區，導致山坡土石結構鬆動",
       type: "background"
     },
     {
-      time: "2025年7月25日",
+      time: "2025年07月25日",
       event: "薇帕颱風豪雨",
       description: "引發第118林班地大規模邊坡崩塌",
       type: "formation"
     },
     {
-      time: "2025年7月26日",
+      time: "2025年07月26日",
       event: "堰塞湖形成",
       description: "農業部衛星監測確認湖體初具規模，湖面約18公頃",
       type: "formation"
     },
     {
-      time: "2025年9月21日",
+      time: "2025年09月21日",
       event: "黃色警戒",
       description: "林業保育署發布黃色警戒通知",
       type: "warning"
     },
     {
-      time: "2025年9月22日",
+      time: "2025年09月22日",
       event: "紅色警戒",
       description: "升級為紅色警戒，建請強制撤離高風險區居民",
       type: "warning"
     },
     {
-      time: "2025年9月23日 14:50",
+      time: "2025年09月23日 14:50",
       event: "開始溢流",
       description: "堰塞湖壩頂開始溢流，災難正式啟動",
       type: "disaster"
     },
     {
-      time: "2025年9月23日 15:30",
+      time: "2025年09月23日 15:30",
       event: "橋梁沖斷",
       description: "台9線馬太鞍溪橋完全沖斷，交通中斷",
       type: "disaster"
     },
     {
-      time: "2025年9月23日 16:00",
+      time: "2025年09月23日 16:00",
       event: "市區淹水",
       description: "洪水湧入光復鄉市區，水位達半層樓高",
       type: "disaster"
     },
     {
-      time: "2025年9月23日-09/26日",
+      time: "2025年09月24日至25日",
       event: "災後緊急處理與救災",
       description: "各級政府與民間團體投入搶險救災，但因交通中斷、災情範圍廣大，初期進展緩慢。期間，關於預警、疏散不力等爭議逐漸浮現。",
       type: "post-disaster"
     },
     {
-      time: "2025年9月26日",
+      time: "2025年09月26日",
       event: "爭議事端發酵",
       description: "媒體與社會各界對中央與地方政府的防災應變、權責劃分、資訊傳達等問題展開激烈檢討與攻訐。",
       type: "post-disaster"
@@ -143,7 +143,7 @@ function App() {
               </Badge>
               <Badge variant="secondary" className="text-sm">
                 <Calendar className="w-4 h-4 mr-1" />
-                2025年9月23日
+                2025年09月23日
               </Badge>
               <Badge variant="outline" className="text-sm">
                 <MapPin className="w-4 h-4 mr-1" />
@@ -192,7 +192,7 @@ function App() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-gray-700 leading-relaxed">
-                  2025年9月23日，花蓮馬太鞍溪堰塞湖溢流事件，雖由樺加沙颱風的極端降雨所觸發，然其導致的重大傷亡與財產損失，已遠遠超越一場單純天災的範疇。本報告深入剖析此次事件的全貌，論證其為一場可預見、卻未能有效阻止的人為系統性災難。
+                  2025年09月23日，花蓮馬太鞍溪堰塞湖溢流事件，雖由樺加沙颱風的極端降雨所觸發，然其導致的重大傷亡與財產損失，已遠遠超越一場單純天災的範疇。本報告深入剖析此次事件的全貌，論證其為一場可預見、卻未能有效阻止的人為系統性災難。
                 </p>
                 <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded">
                   <h4 className="font-semibold text-red-800 mb-2">關鍵發現</h4>
@@ -220,7 +220,7 @@ function App() {
                 <div>
                   <h3 className="text-xl font-semibold mb-3">堰塞湖形成原因與潛伏風險</h3>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    本次花蓮馬太鞍溪堰塞湖溢流災害的肇因可追溯至更早的自然事件。2024年4月發生於花蓮的大地震劇烈震動東部山區，導致山坡土石結構鬆動，埋下日後大規模崩塌的隱憂。
+                    本次花蓮馬太鞍溪堰塞湖溢流災害的肇因可追溯至更早的自然事件。2024年04月發生於花蓮的大地震劇烈震動東部山區，導致山坡土石結構鬆動，埋下日後大規模崩塌的隱憂。
                   </p>
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                     <h4 className="font-semibold text-blue-800 mb-2">堰塞湖基本數據</h4>
@@ -250,7 +250,7 @@ function App() {
                 <div>
                   <h3 className="text-xl font-semibold mb-3">溢流事件歷程與災害概況</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    2025年9月下旬，超強颱風「樺加沙」的外圍環流為東部山區帶來致命豪雨。9月23日當日下午2時50分，堰塞湖壩頂開始溢流，巨量湖水自天然壩體上漫出。16時30分發生第二波更猛烈的溢流，在短短半小時內壩前水位驟降14公尺，相當於約1,540萬噸水體傾瀉而下，最大洪峰流量高達每秒8,800立方公尺，規模之巨已近乎潰壩等級。
+                    2025年09月下旬，超強颱風「樺加沙」的外圍環流為東部山區帶來致命豪雨。09月23日當日下午2時50分，堰塞湖壩頂開始溢流，巨量湖水自天然壩體上漫出。16時30分發生第二波更猛烈的溢流，在短短半小時內壩前水位驟降14公尺，相當於約1,540萬噸水體傾瀉而下，最大洪峰流量高達每秒8,800立方公尺，規模之巨已近乎潰壩等級。
                   </p>
                 </div>
               </CardContent>
@@ -369,14 +369,14 @@ function App() {
                   {expandedSections.central_monitoring && (
                     <div className="mt-4 space-y-3">
                       <p className="text-gray-700">
-                        馬太鞍溪堰塞湖自形成之初即受到中央政府專業單位的密切關注。農業部林業及自然保育署在7月下旬即動員衛星影像與空拍監測，定期評估湖水水位、壩體結構及下游潛在影響範圍。專家會議最終達成共識：工程介入的風險遠大於效益，在當時條件下不可行。最佳策略改為被動應對，即強化監測、完善預警、及早疏散。
+                        馬太鞍溪堰塞湖自形成之初即受到中央政府專業單位的密切關注。農業部林業及自然保育署在07月下旬即動員衛星影像與空拍監測，定期評估湖水水位、壩體結構及下游潛在影響範圍。專家會議最終達成共識：工程介入的風險遠大於效益，在當時條件下不可行。最佳策略改為被動應對，即強化監測、完善預警、及早疏散。
                       </p>
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                         <h4 className="font-semibold text-blue-800 mb-2">中央預警時間線</h4>
                         <ul className="space-y-1 text-blue-700 text-sm">
-                          <li>• 9月21日：發布黃色警戒通知</li>
-                          <li>• 9月22日：升級為紅色警戒</li>
-                          <li>• 9月23日：當日7次發出紅色警戒通報</li>
+                          <li>• 09月21日：發布黃色警戒通知</li>
+                          <li>• 09月22日：升級為紅色警戒</li>
+                          <li>• 09月23日：當日7次發出紅色警戒通報</li>
                         </ul>
                       </div>
                     </div>
@@ -535,14 +535,14 @@ function App() {
                       <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">修訂《災害防救法》</h4>
-                        <p className="text-gray-600 text-sm">明定中央支援義務與介入條件，當地方能力不足時中央必須主動介入支援。<br /><span className="text-gray-500">（來源：國立成功大學防災研究中心主任 吳哲雄 教授，2025年9月25日媒體專訪）</span></p>
+                        <p className="text-gray-600 text-sm">明定中央支援義務與介入條件，當地方能力不足時中央必須主動介入支援。（國立成功大學防災研究中心主任 吳哲雄 教授，2025年09月25日媒體專訪）</p>
                       </div>
                     </li>
                     <li className="flex gap-3">
                       <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">建立統一指揮體系</h4>
-                        <p className="text-gray-600 text-sm">針對跨區域、複雜大型災害，授權中央直接調度指揮地方應變資源。<br /><span className="text-gray-500">（來源：前國家災害防救科技中心主任 陳宏宇 博士，2025年9月26日研討會發言）</span></p>
+                        <p className="text-gray-600 text-sm">針對跨區域、複雜大型災害，授權中央直接調度指揮地方應變資源。（前國家災害防救科技中心主任 陳宏宇 博士，2025年09月26日研討會發言）</p>
                       </div>
                     </li>
                   </ul>
@@ -557,14 +557,14 @@ function App() {
                       <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">專業化地方防災單位</h4>
-                        <p className="text-gray-600 text-sm">補助各縣市成立專責災害管理辦公室，配備專業防災人員。<br /><span className="text-gray-500">（來源：台灣防災產業協會理事長 郭鎧紋，2025年9月24日新聞稿）</span></p>
+                        <p className="text-gray-600 text-sm">補助各縣市成立專責災害管理辦公室，配備專業防災人員。（台灣防災產業協會理事長 郭鎧紋，2025年09月24日新聞稿）</p>
                       </div>
                     </li>
                     <li className="flex gap-3">
                       <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">常態化聯合演練</h4>
-                        <p className="text-gray-600 text-sm">強制每年舉行中央與地方聯合的突發情境疏散演練，並納入跨層級溝通協調機制。<br /><span className="text-gray-500">（來源：國立臺灣大學地理環境資源學系教授 林俊全，2025年9月25日學術投書）</span></p>
+                        <p className="text-gray-600 text-sm">強制每年舉行中央與地方聯合的突發情境疏散演練，並納入跨層級溝通協調機制。（國立臺灣大學地理環境資源學系教授 林俊全，2025年09月25日學術投書）</p>
                       </div>
                     </li>
                   </ul>
@@ -579,14 +579,14 @@ function App() {
                       <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">成立國家級風險傳播專責小組</h4>
-                        <p className="text-gray-600 text-sm">將複雜災害風險資訊轉化為清晰、有說服力且能引導行動的公共訊息，並針對不同族群設計溝通策略。<br /><span className="text-gray-500">（來源：公共關係與危機管理專家 張景森，2025年9月24日評論文章）</span></p>
+                        <p className="text-gray-600 text-sm">將複雜災害風險資訊轉化為清晰、有說服力且能引導行動的公共訊息，並針對不同族群設計溝通策略。（公共關係與危機管理專家 張景森，2025年09月24日評論文章）</p>
                       </div>
                     </li>
                     <li className="flex gap-3">
                       <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold">廢除模糊的避難指引</h4>
-                        <p className="text-gray-600 text-sm">在極端高危情況下，疏散指令應當單一且不容妥協——即「立刻全面撤離」，避免任何可能造成誤解的選項。<br /><span className="text-gray-500">（來源：災害心理學家 李明華 博士，2025年9月26日專題演講）</span></p>
+                        <p className="text-gray-600 text-sm">在極端高危情況下，疏散指令應當單一且不容妥協——即「立刻全面撤離」，避免任何可能造成誤解的選項。（災害心理學家 李明華 博士，2025年09月26日專題演講）</p>
                       </div>
                     </li>
                   </ul>
@@ -652,21 +652,21 @@ function App() {
                   <div className="space-y-3">
                     <img 
                       src={image7} 
-                      alt="災民撤離" 
+                      alt="花蓮縣政府防災應變會議" 
                       className="w-full h-64 object-cover rounded-lg shadow-md"
                     />
                     <p className="text-sm text-gray-600 text-center">
-                      圖5：災民撤離畫面，顯示救援人員協助民眾撤離災區<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
+                      圖5：花蓮縣政府召開防災應變會議，討論堰塞湖溢流應對策略<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
                     </p>
                   </div>
                   <div className="space-y-3">
                     <img 
                       src={image8} 
-                      alt="堰塞湖溢流瞬間" 
+                      alt="堰塞湖溢流沖毀橋梁" 
                       className="w-full h-64 object-cover rounded-lg shadow-md"
                     />
                     <p className="text-sm text-gray-600 text-center">
-                      圖6：堰塞湖溢流瞬間，大量湖水傾瀉而下<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
+                      圖6：堰塞湖溢流瞬間，大量泥水沖毀橋梁，洪水湧向市區<br /><span className="text-gray-500">（來源：網路新聞資料）</span>
                     </p>
                   </div>
                 </div>
@@ -685,6 +685,7 @@ function App() {
             <p className="text-gray-300 max-w-3xl mx-auto">
               花蓮馬太鞍溪堰塞湖溢流事件是一面鏡子，照出臺灣從法規、體制到政治文化的防災缺陷。
               汲取這次教訓，中央政府責無旁貸地需要推動改革，讓防災體系權責相符、資源下沉、指揮統一、訊息順暢。
+              同時，地方政府也應積極提升自主應變能力，強化與中央的協調合作，並建立更有效的風險溝通機制，確保預警資訊能轉化為民眾的實際行動。
               唯有如此，方能將這場痛苦經驗轉化為進步的動力，築起更堅實的國土防護網，迎向更具韌性的未來。
             </p>
           </div>
